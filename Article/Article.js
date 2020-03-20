@@ -85,8 +85,66 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'We will expand our knowledge here at Lambda 2020!',
+    date: 'March 17,2020',
+    firstParagraph: `What will we do to expand our knowledge? We will learn and explore the world of software technology. `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
+
+  
 ];
+
+const createArticle = (title, date, paragraphOne, paragraphTwo, paragraphThree) =>{
+
+let article = document.createElement('div');
+let header = document.createElement('h2');
+let dates = document.createElement('p');
+let pOne = document.createElement('p');
+let pTwo = document.createElement('p');
+let pThree = document.createElement('p');
+let button = document.createElement('span');
+
+
+article.appendChild(header);
+article.appendChild(dates);
+article.appendChild(pOne);
+article.appendChild(pTwo);
+article.appendChild(pThree);
+article.appendChild(button);
+
+header.textContent = title;
+dates.textContent = date;
+pOne.textContent = paragraphOne;
+pTwo.textContent = paragraphTwo;
+pThree.textContent = paragraphThree;
+button.textContent = "button";
+
+article.classList.add('article');
+button.classList.add('expandButton');
+dates.classList.add('date');
+
+button.addEventListener('click', () =>{
+  article.classList.toggle('article-open');
+});
+
+
+return article;
+}
+const articles = document.querySelector('.articles');
+data.forEach(data =>{
+  articles.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph))
+
+});
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
